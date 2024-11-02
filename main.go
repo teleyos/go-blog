@@ -1,21 +1,14 @@
 package main
 
 import (
-	"context"
-	"net/http"
-	"os"
+	"teleyos/go-blog/controllers"
+	"teleyos/go-blog/models/routes"
 )
 
-func getRoot(w http.ResponseWriter, r *http.Request) {
-	component := hello("World")
-	component.Render(context.Background(), w)
-}
+var App = controllers.App{}
 
 func main() {
-	http.HandleFunc("/", getRoot)
+	App.RegisterRoutes(routes.RoutesList)
 
-	err := http.ListenAndServe(":8090", nil)
-	if err != nil {
-		os.Exit(1)
-	}
+	App.Serve(":8090")
 }
