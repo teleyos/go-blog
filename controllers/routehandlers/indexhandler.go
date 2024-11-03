@@ -6,6 +6,5 @@ import (
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request){
-	component := views.Hello("index")
-	component.Render(r.Context(), w)
+	views.Index().Render(r.Context(),w)
 }

@@ -1,0 +1,26 @@
+package views
+
+templ Index() {
+    <!DOCTYPE html>
+    <html lang="fr">
+        <head>
+            <meta charset="utf-8"/>
+            <title>Just a normal index</title>
+            <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        </head>
+        <body>
+            <h1>Give me your name !</h1>
+            <form
+                hx-get="/partials/hello"
+                hx-params="*"
+                hx-swap="innerHTML"
+                hx-target="#output"
+            >
+                <input type="text" name="name" placeholder="type it here :3"/>
+                <button type="submit">Submit</button>
+                <div id="output"></div>
+            </form>
+        </body>
+    </html>
+}
